@@ -1,36 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HireSight</title>
+    <title>HireSight: AI Talent Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@mozilla/readability@0.5.0/Readability.js"></script>
+    
     <script>
-      // Prevents Flash of Unstyled Content (FOUC) for dark mode
-      (function() {
-        try {
-          var theme = localStorage.getItem('theme');
-          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-          }
-        } catch (e) {}
-      })();
+      // On page load, set the theme based on user preference or system settings to avoid FOUC
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Configure Tailwind to use the 'class' strategy for dark mode
+      tailwind.config = {
+        darkMode: 'class',
+      };
+
+      // Polyfill para process.env.API_KEY
+      window.process = {
+        env: {
+          API_KEY: 'AIzaSyCJXUcyHrm7atXwKYB0LgsG4aIDz5FjVd0'
+        }
+      };
     </script>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "@vercel/node": "https://aistudiocdn.com/@vercel/node@^5.3.24",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.22.0",
-    "vite": "https://aistudiocdn.com/vite@^7.1.9",
-    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.4"
-  }
-}
-</script>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.1.1",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+        "react/": "https://aistudiocdn.com/react@^19.1.1/",
+        "@google/genai": "https://aistudiocdn.com/@google/genai@^1.21.0"
+      }
+    }
+    </script>
 </head>
-  <body>
+<body>
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
-  </body>
+</body>
 </html>

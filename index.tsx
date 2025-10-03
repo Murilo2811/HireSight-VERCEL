@@ -1,13 +1,15 @@
-// FIX: Removed the reference to "vite/client" as the type definition file could not be found.
-// This is safe because this project does not use Vite-specific client features
-// like `import.meta.env`.
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { LanguageProvider } from './contexts/LanguageContext';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
   <React.StrictMode>
     <LanguageProvider>
       <App />
