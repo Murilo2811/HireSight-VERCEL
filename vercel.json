@@ -1,0 +1,8 @@
+
+{
+  "functions": {
+    "api/generate.ts": {
+      "maxDuration": 45
+    }
+  }
+}

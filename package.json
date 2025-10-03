@@ -1,0 +1,17 @@
+
+{
+  "name": "hiresight-app",
+  "version": "1.0.0",
+  "description": "HireSight: AI-Powered Talent Analysis V2",
+  "private": true,
+  "scripts": {
+    "build": "echo 'No build step required for frontend, Vercel handles API build.'"
+  },
+  "dependencies": {
+    "@google/genai": "^1.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "typescript": "^5.4.5"
+  }
+}
